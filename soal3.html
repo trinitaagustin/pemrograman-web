@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Biaya Parkir</title>
+</head>
+<body>
+    <h1>Hitung Biaya Parkir</h1>
+    
+    <label for="jamMasuk">Jam Masuk:</label>
+    <input type="number" id="jamMasuk" placeholder="Masukkan jam masuk (0-23)">
+    
+    <label for="jamKeluar">Jam Keluar:</label>
+    <input type="number" id="jamKeluar" placeholder="Masukkan jam keluar (0-23)">
+    
+    <button onclick="hitungBiayaParkir()">Hitung Biaya</button>
+
+    <p><strong>Lama Parkir:</strong> <span id="lamaParkir">0</span> jam</p>
+    <p><strong>Biaya Parkir:</strong> <span id="biayaParkir">Rp 0</span></p>
+
+    <script>
+        function hitungBiayaParkir() {
+            const jamMasuk = parseInt(document.getElementById("jamMasuk").value);
+            const jamKeluar = parseInt(document.getElementById("jamKeluar").value);
+
+            if (isNaN(jamMasuk) || isNaN(jamKeluar) || jamMasuk < 0 || jamKeluar < 0 || jamMasuk >= 24 || jamKeluar >= 24) {
+                alert("Masukkan jam yang valid antara 0 sampai 23.");
+                return;
+            }
+
+            let lamaParkir = jamKeluar - jamMasuk;
+            if (lamaParkir <= 0) {
+                alert("Jam keluar harus lebih besar dari jam masuk.");
+                return;
+            }
+
+            let biaya = 3000;
+            if (lamaParkir > 2) {
+                biaya += (lamaParkir - 2) * 1000;
+            }
+
+            document.getElementById("lamaParkir").innerText = lamaParkir;
+            document.getElementById("biayaParkir").innerText = `Rp ${biaya}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung Kurs Rupiah</title>
+</head>
+<body>
+    <h1>Konversi Rupiah ke Dollar</h1>
+    <label for="rupiahToDollar">Masukkan nilai rupiah:</label>
+    <input type="number" id="rupiahToDollar" onkeyup="rupiahkeDollar()">
+    <p>Hasil Konversi ke Dollar: <span id="hasil"></span></p>
+
+    <h1>Konversi Dollar ke Rupiah</h1>
+    <label for="dollarToRupiah">Masukkan nilai dollar:</label>
+    <input type="number" id="dollarToRupiah" onkeyup="dollarkeRupiah()">
+    <p>Hasil Konversi ke Rupiah: <span id="hasil2"></span></p>
+
+    <script>
+        function rupiahkeDollar() {
+            let rupiah = document.getElementById('rupiahToDollar').value;
+            let hasil = rupiah / 15942;
+            document.getElementById('hasil').innerHTML = hasil.toFixed(2);
+        }
+
+        function dollarkeRupiah() {
+            let dollar = document.getElementById('dollarToRupiah').value;
+            let hasil = dollar * 15942;
+            document.getElementById('hasil2').innerHTML = hasil.toLocaleString();
+        }
+    </script>
+</body>
+</html>
